@@ -202,6 +202,15 @@ svg.fill { fill: currentColor; stroke: none; }
 }
 .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
 
+.hero-id { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.avatar {
+  width: clamp(84px, 11vw, 112px); height: auto; aspect-ratio: 1;
+  border-radius: 50%; object-fit: cover; object-position: 50% 35%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent), var(--shadow);
+  background: var(--bg-sunken);
+}
+
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);
