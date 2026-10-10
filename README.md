@@ -3,8 +3,8 @@
 Personal CV site for Bekhzod Khudoyarov: static HTML, CSS, and JS with no build step.
 
 - `index.html`: content
-- `styles.css`: design tokens, light/dark themes, responsive layout, print styles
-- `script.js`: theme toggle, mobile menu, scroll reveal, copy-email
+- `styles.css`: dark theme, per-section accent colors, screen transitions, responsive and print styles
+- `script.js`: section routing (links, keys 1-4, Esc), text reveal, and the canvas particle scene
 - `assets/Bekhzod_Khudoyarov_CV.pdf`: downloadable CV
 - `.github/workflows/deploy.yml`: deploys to GitHub Pages on every push to `main`
 
