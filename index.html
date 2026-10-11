@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bekhzod Khudoyarov · Backend Engineer</title>
+  <title>Bekhzod Khudoyarov · Backend Software Engineer</title>
   <meta name="description" content="Backend Software Engineer (Go) building high-load fintech, healthcare, and distributed systems." />
   <meta name="author" content="Bekhzod Khudoyarov" />
   <link rel="canonical" href="https://beccoder.github.io/" />
+  <link rel="alternate" hreflang="en" href="https://beccoder.github.io/?lang=en" />
+  <link rel="alternate" hreflang="ru" href="https://beccoder.github.io/?lang=ru" />
+  <link rel="alternate" hreflang="uz" href="https://beccoder.github.io/?lang=uz" />
+  <link rel="alternate" hreflang="x-default" href="https://beccoder.github.io/" />
 
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Bekhzod Khudoyarov · Backend Engineer" />
+  <meta property="og:title" content="Bekhzod Khudoyarov · Backend Software Engineer" />
   <meta property="og:description" content="Backend Software Engineer (Go) building high-load fintech, healthcare, and distributed systems." />
   <meta property="og:url" content="https://beccoder.github.io/" />
   <meta property="og:image" content="https://beccoder.github.io/assets/profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#010103" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23010103'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='30' fill='%237fd6ff'%3EB%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23010103'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='28' fill='%237fd6ff'%3EBK%3C/text%3E%3C/svg%3E" />
 
-  <script>document.documentElement.classList.add("js")</script>
+  <script>
+    document.documentElement.classList.add("js");
+    // Pick the language before first paint so the page never flashes English
+    (function () {
+      var l = null;
+      try { l = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+      if (!l) { try { l = localStorage.getItem("lang"); } catch (e) {} }
+      if (!l) { var n = (navigator.language || "").slice(0, 2); if (n === "ru" || n === "uz") l = n; }
+      if (l === "ru" || l === "uz") document.documentElement.setAttribute("data-lang-pending", l);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Manrope:wght@300;500;700;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -31,115 +45,372 @@
     "mainEntity": {
       "@type": "Person",
       "name": "Bekhzod Khudoyarov",
+      "alternateName": ["Бехзод Худояров", "Behzod Xudoyorov"],
       "jobTitle": "Backend Software Engineer",
       "url": "https://beccoder.github.io/",
       "image": "https://beccoder.github.io/assets/profile.jpg",
       "email": "mailto:bekhzodkhudoyarov@gmail.com",
       "sameAs": ["https://github.com/beccoder", "https://www.linkedin.com/in/bekhzodkhudoyarov"],
-      "knowsAbout": ["Go", "Python", "PostgreSQL", "Kafka", "NATS", "Redis", "Kubernetes", "Docker", "HL7 FHIR"]
+      "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "Riga Technical University" }, { "@type": "EducationalOrganization", "name": "School 21 (42 Network)" }],
+      "knowsLanguage": ["en", "ru", "uz"],
+      "knowsAbout": ["Go", "Python", "C++", "PostgreSQL", "Kafka", "NATS", "Redis", "Kubernetes", "Docker", "HL7 FHIR"]
     }
   }
   </script>
 </head>
 <body>
   <canvas id="scene" aria-hidden="true"></canvas>
-  <div id="flash" aria-hidden="true"></div>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
-  <main>
-    <div id="loader" aria-hidden="true"><span></span></div>
+  <!-- ===================================================================== -->
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="Bekhzod Khudoyarov">
+        <span class="brand-mark">BK</span>
+        <span class="brand-name" data-i18n="name">Bekhzod Khudoyarov</span>
+      </a>
 
-    <section id="hero" class="screen">
-      <img class="avatar" src="assets/profile.jpg" alt="Portrait of Bekhzod Khudoyarov" width="480" height="480" fetchpriority="high" />
-      <h1 class="greet" data-split="chars">Hi, I am <span class="name">Bekhzod</span></h1>
-      <p class="tagline">backend engineer · go · fintech &amp; healthcare</p>
-      <nav class="dims" aria-label="Sections">
-        <a class="dim" href="#about" data-dim="about" aria-keyshortcuts="1"><span class="idx">01</span><span class="label">about me</span></a>
-        <a class="dim" href="#work" data-dim="work" aria-keyshortcuts="2"><span class="idx">02</span><span class="label">work</span></a>
-        <a class="dim" href="#stack" data-dim="stack" aria-keyshortcuts="3"><span class="idx">03</span><span class="label">stack</span></a>
-        <a class="dim" href="#contact" data-dim="contact" aria-keyshortcuts="4"><span class="idx">04</span><span class="label">contact</span></a>
+      <nav aria-label="Primary" class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#education" data-i18n="nav.education">Education</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
       </nav>
-    </section>
 
-    <section id="about" class="screen page">
-      <h2>about me</h2>
-      <div class="body" data-split="words">
-        <p>I build backend systems in <em>Go</em>, mostly for <em>fintech</em> and <em>healthcare</em>.</p>
-        <p>Right now I work on <em>Incard.uz</em>, an auto-payment platform connected to more than 200 banks, financial institutions, and insurers. I study computer science at <em>Riga Technical University</em> (class of 2027), after three years at <em>School 21</em>.</p>
+      <div class="nav-actions">
+        <div class="lang" role="group" aria-label="Language" data-i18n-attr="aria-label:lang.label">
+          <button type="button" data-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+          <button type="button" data-lang="ru" aria-pressed="false" lang="ru" title="Русский">RU</button>
+          <button type="button" data-lang="uz" aria-pressed="false" lang="uz" title="O‘zbekcha">UZ</button>
+        </div>
+        <a class="btn btn-sm btn-ghost nav-cv" href="assets/Bekhzod_Khudoyarov_CV.pdf" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+          <span data-i18n="nav.cv">CV</span>
+        </a>
+        <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu" data-i18n-attr="aria-label:menu.open">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
-      <dl class="facts" data-split="words">
-        <div><dt>memory use</dt><dd>6× lower</dd></div>
-        <div><dt>project revenue</dt><dd>3× up</dd></div>
-        <div><dt>partners live</dt><dd>200+</dd></div>
-      </dl>
-    </section>
+    </div>
+  </header>
 
-    <section id="work" class="screen page page-wide">
-      <h2>work</h2>
-      <ol class="jobs" data-split="words">
-        <li>
-          <p class="when">Jan 2025 · now</p>
-          <h3>Software Engineer <span>at Positive Solutions</span></h3>
-          <p>Cut memory use <em>six times</em> on Incard.uz, connected <em>six partner systems</em>, and helped the project <em>triple its revenue</em> by tuning Go concurrency and fixing what kept breaking.</p>
-        </li>
-        <li>
-          <p class="when">Aug 2023 · Dec 2024</p>
-          <h3>Software Engineer <span>at Uzinfocom</span></h3>
-          <p>Wrote code generators for an <em>HL7 FHIR</em> health platform, and designed a plug-in architecture for the <em>Uzbekistan Football Association</em> platform, which integrates with FIFA.</p>
-        </li>
-        <li>
-          <p class="when">Jan 2023 · Jul 2023</p>
-          <h3>Junior Software Engineer <span>at Uzbekistan Railways</span></h3>
-          <p>Built the backend of a <em>lab certification system</em> from scratch and took it to production with tests and documentation.</p>
-        </li>
-      </ol>
-      <a class="more" href="assets/Bekhzod_Khudoyarov_CV.pdf" download>full cv, pdf <span aria-hidden="true">↓</span></a>
-    </section>
+  <main id="main">
+    <!-- HERO ============================================================== -->
+    <section class="hero" id="hero" data-view="hero">
+      <div class="wrap">
+        <div class="col">
+          <div class="hero-id">
+            <img class="avatar" src="assets/profile.jpg" alt="Portrait of Bekhzod Khudoyarov" width="480" height="480" fetchpriority="high" data-i18n-attr="alt:avatar.alt" />
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Backend Software Engineer · Riga, Latvia</span></p>
+          </div>
+          <p class="hello" data-i18n="hero.hi">Hi, I'm</p>
+          <h1 class="name" data-i18n="name" data-split>Bekhzod Khudoyarov</h1>
+          <p class="lead" data-i18n="hero.lead">Backend engineer working in <span class="hl">Go</span>. I build high-load systems for fintech, healthcare, and distributed services.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="assets/Bekhzod_Khudoyarov_CV.pdf" download>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+              <span data-i18n="hero.cv">Download CV</span>
+            </a>
+            <a class="btn btn-ghost" href="#contact">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+              <span data-i18n="hero.contact">Get in touch</span>
+            </a>
+            <a class="icon-btn icon-lg" href="https://github.com/beccoder" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" class="fill" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .3"/></svg>
+            </a>
+            <a class="icon-btn icon-lg" href="https://www.linkedin.com/in/bekhzodkhudoyarov" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="fill" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
+        </div>
 
-    <section id="stack" class="screen page">
-      <h2>stack</h2>
-      <div class="body" data-split="words">
-        <p><em>Go</em> is my main language. I also write <em>Python</em>, <em>C/C++</em>, and <em>SQL</em> on PostgreSQL.</p>
-        <p>Services talk through <em>Kafka</em> and <em>NATS</em>, cache in <em>Redis</em>, and ship in <em>Docker</em> on <em>Kubernetes</em>. I document APIs in Swagger and test them in Postman.</p>
-        <p>I speak English, Russian, and Uzbek.</p>
+        <dl class="stats">
+          <div class="stat"><dd>6×</dd><dt data-i18n="stat.memory">lower memory use</dt></div>
+          <div class="stat"><dd>3×</dd><dt data-i18n="stat.revenue">project revenue growth</dt></div>
+          <div class="stat"><dd>200+</dd><dt data-i18n="stat.partners">banks and partner institutions</dt></div>
+          <div class="stat"><dd>3+</dd><dt data-i18n="stat.years">years of commercial experience</dt></div>
+        </dl>
       </div>
     </section>
 
-    <section id="contact" class="screen page">
-      <h2>contact</h2>
-      <div class="tiles">
-        <a class="tile" href="https://github.com/beccoder" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .3"/></svg>
-          <span class="sr">GitHub</span>
-        </a>
-        <a class="tile" href="https://www.linkedin.com/in/bekhzodkhudoyarov" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-          <span class="sr">LinkedIn</span>
-        </a>
-        <a class="tile" href="mailto:bekhzodkhudoyarov@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-          <span class="sr">Email</span>
-        </a>
-        <a class="tile" href="assets/Bekhzod_Khudoyarov_CV.pdf" download>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M12 11.5v6m0 0l-2.5-2.5M12 17.5l2.5-2.5"/></svg>
-          <span class="sr">Download CV as PDF</span>
-        </a>
-        <p class="note" aria-hidden="true">
-          <svg viewBox="0 0 24 40"><path d="M12 38C9 30 15 22 12 14M12 4l-5 6M12 4l5 6"/></svg>
-          grab my cv!
-        </p>
+    <!-- ABOUT ============================================================= -->
+    <section class="section" id="about" data-view="about">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">01</span>
+            <h2 data-i18n="about.title">About me</h2>
+          </header>
+          <div class="prose reveal">
+            <p class="big" data-i18n="about.p1">I'm a backend engineer working mainly in <em>Go</em>. Over the past few years I've built systems where reliability matters: an <em>auto-payment platform</em> connected to more than 200 banks and insurers, a <em>digital health platform</em> on HL7 FHIR, and a platform for the <em>Uzbekistan Football Association</em>.</p>
+            <p data-i18n="about.p2">Most of my work is about performance and stability: profiling, tuning concurrency, adding observability, and writing tests. I'm studying for a Bachelor of Computer Science at Riga Technical University, and before that I studied at School 21 (42 Network).</p>
+          </div>
+          <dl class="facts reveal">
+            <div><dt data-i18n="fact.location">Location</dt><dd data-i18n="fact.location.v">Riga, Latvia</dd></div>
+            <div><dt data-i18n="fact.languages">Languages</dt><dd data-i18n="fact.languages.v">English, Russian, Uzbek</dd></div>
+            <div><dt data-i18n="fact.focus">Focus</dt><dd data-i18n="fact.focus.v">Go, distributed systems, fintech</dd></div>
+          </dl>
+        </div>
       </div>
-      <p class="mail" data-split="words">or write to <em>bekhzodkhudoyarov@gmail.com</em></p>
+    </section>
+
+    <!-- EXPERIENCE ======================================================== -->
+    <section class="section" id="experience" data-view="experience">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">02</span>
+            <h2 data-i18n="exp.title">Experience</h2>
+          </header>
+
+          <ol class="timeline">
+            <!-- Positive Solutions -->
+            <li class="job reveal">
+              <div class="job-head">
+                <h3><span data-i18n="role.se">Software Engineer</span> <span class="at" data-i18n="co.ps">Positive Solutions LLC</span></h3>
+                <p class="job-meta"><time data-i18n="job1.date">Jan 2025 – Present</time><span data-i18n="place.tashkent">Tashkent, Uzbekistan</span></p>
+              </div>
+              <p class="overview"><span class="ov-label" data-i18n="label.project">Project</span> <span data-i18n="job1.ov"><strong>Incard.uz</strong> is a large-scale auto-payment platform integrated with more than 200 banks, financial institutions, and insurance companies. It automates recurring payments and provides high availability, scalability, and observability across all partner integrations.</span></p>
+              <ul class="bullets">
+                <li data-i18n="job1.b1">Reduced memory usage <mark>sixfold</mark> by adopting tools with efficient data compression algorithms and optimizing memory-intensive routines.</li>
+                <li data-i18n="job1.b2">Improved system observability by integrating logging and monitoring tools, and built custom adapters to connect them to the existing infrastructure.</li>
+                <li data-i18n="job1.b3">Integrated the platform with <mark>six major partner systems</mark>, including banks and fintech services, expanding the service's functionality and reach.</li>
+                <li data-i18n="job1.b4">Shipped features that increased client-handling capacity and transaction throughput, noticeably improving scalability.</li>
+                <li data-i18n="job1.b5">Reduced recurring bugs by refactoring legacy components, improving error handling, and expanding test coverage.</li>
+                <li data-i18n="job1.b6">Contributed to <mark>threefold growth in project revenue</mark> through better stability, new partner integrations, and additional payment channels.</li>
+                <li data-i18n="job1.b7">Optimized resource usage through profiling, tuning concurrency models, and improving service efficiency.</li>
+                <li data-i18n="job1.b8">Delivered high-performance solutions using Go concurrency patterns, improving parallel processing, throughput, and reliability.</li>
+              </ul>
+              <ul class="chips"><li>Go</li><li data-i18n="sk.concurrency">Concurrency</li><li data-i18n="sk.observability">Observability</li><li data-i18n="sk.payments">Payment systems</li><li>PostgreSQL</li></ul>
+            </li>
+
+            <!-- Uzinfocom -->
+            <li class="job reveal">
+              <div class="job-head">
+                <h3><span data-i18n="role.se">Software Engineer</span> <span class="at" data-i18n="co.uzinfocom">Uzinfocom LLC</span></h3>
+                <p class="job-meta"><time data-i18n="job2.date">Aug 2023 – Dec 2024</time><span data-i18n="place.tashkent">Tashkent, Uzbekistan</span></p>
+              </div>
+              <p class="overview"><span class="ov-label" data-i18n="label.project1">Project 1</span> <span data-i18n="job2.ov1"><strong>Digital health platform</strong> based on the HL7 FHIR standard for secure, standardized exchange of medical data.</span></p>
+              <ul class="bullets">
+                <li data-i18n="job2.a1">Built automation tools that generate FHIR-compliant resource structures, speeding up development and significantly reducing manual coding.</li>
+                <li data-i18n="job2.a2">Developed internal utilities and helper methods that simplify working with FHIR resources.</li>
+                <li data-i18n="job2.a3">Performed quality control to ensure compliance with clinical and regulatory standards.</li>
+                <li data-i18n="job2.a4">Analyzed requirements to align platform functionality with client and compliance needs.</li>
+                <li data-i18n="job2.a5">Executed unit, integration, and end-to-end test scenarios to keep the platform robust and reliable.</li>
+                <li data-i18n="job2.a6">Logged, triaged, and tracked bugs together with cross-functional teams to resolve issues promptly.</li>
+                <li data-i18n="job2.a7">Delivered regular product demos to stakeholders and collected actionable feedback.</li>
+                <li data-i18n="job2.a8">Made decisions on feature readiness and deployment to keep the project on schedule.</li>
+              </ul>
+              <p class="overview"><span class="ov-label" data-i18n="label.project2">Project 2</span> <span data-i18n="job2.ov2"><strong>Uzbekistan Football Association platform</strong> with integration into official FIFA projects.</span></p>
+              <ul class="bullets">
+                <li data-i18n="job2.c1">Designed a scalable, modular architecture based on the plug-in pattern to maximize maintainability.</li>
+                <li data-i18n="job2.c2">Built a project generator that automates setup: architectural boilerplate, documentation, and CRUD service scaffolding.</li>
+                <li data-i18n="job2.c3">Developed and maintained reusable libraries for common backend operations.</li>
+                <li data-i18n="job2.c4">Contributed to high-load backend services that support large-scale user activity.</li>
+              </ul>
+              <ul class="chips"><li>HL7 FHIR</li><li data-i18n="sk.codegen">Code generation</li><li data-i18n="tag.plugin">Plug-in architecture</li><li>QA</li></ul>
+            </li>
+
+            <!-- Uzbekistan Railways -->
+            <li class="job reveal">
+              <div class="job-head">
+                <h3><span data-i18n="role.jse">Junior Software Engineer</span> <span class="at" data-i18n="co.railways">Uzbekistan Railways JSC</span></h3>
+                <p class="job-meta"><time data-i18n="job3.date">Jan 2023 – Jul 2023</time><span data-i18n="place.tashkent">Tashkent, Uzbekistan</span></p>
+              </div>
+              <p class="overview"><span class="ov-label" data-i18n="label.project">Project</span> <span data-i18n="job3.ov"><strong>Laboratory automation and monitoring system</strong> for the analysis, accounting, and certification of imported products.</span></p>
+              <ul class="bullets">
+                <li data-i18n="job3.b1">Led backend development from scratch, building a robust, scalable system for data analysis, reporting, and certification.</li>
+                <li data-i18n="job3.b2">Implemented business logic and database integration for efficient data handling and processing.</li>
+                <li data-i18n="job3.b3">Wrote unit and integration tests to ensure code quality and system reliability.</li>
+                <li data-i18n="job3.b4">Deployed the system to production and set up continuous monitoring.</li>
+                <li data-i18n="job3.b5">Wrote clear, thorough documentation of the development process and system functionality.</li>
+                <li data-i18n="job3.b6">Optimized performance for fast data processing and lower resource usage.</li>
+              </ul>
+              <ul class="chips"><li>Backend</li><li>PostgreSQL</li><li data-i18n="tag.testing">Testing</li><li data-i18n="tag.deploy">Deployment</li></ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS ========================================================== -->
+    <section class="section" id="projects" data-view="projects">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">03</span>
+            <h2 data-i18n="proj.title">Featured projects</h2>
+          </header>
+          <div class="cards">
+            <article class="card project reveal">
+              <div class="card-top"><span class="tag" data-i18n="p1.tag">Fintech</span><span class="org">Positive Solutions</span></div>
+              <h3>Incard.uz</h3>
+              <p data-i18n="p1.desc">Auto-payment platform for recurring transactions across more than 200 banks, financial institutions, and insurers.</p>
+              <ul class="impact">
+                <li data-i18n="p1.i1">6× lower memory use</li>
+                <li data-i18n="p1.i2">3× revenue growth</li>
+                <li data-i18n="p1.i3">6 partner integrations</li>
+              </ul>
+            </article>
+            <article class="card project reveal">
+              <div class="card-top"><span class="tag" data-i18n="p2.tag">Healthcare</span><span class="org">Uzinfocom</span></div>
+              <h3 data-i18n="p2.title">HL7 FHIR health platform</h3>
+              <p data-i18n="p2.desc">Digital health platform for secure, standards-based exchange of medical data.</p>
+              <ul class="impact">
+                <li data-i18n="p2.i1">FHIR code generation</li>
+                <li data-i18n="p2.i2">Clinical and regulatory QA</li>
+                <li data-i18n="p2.i3">Unit, integration, and E2E testing</li>
+              </ul>
+            </article>
+            <article class="card project reveal">
+              <div class="card-top"><span class="tag" data-i18n="p3.tag">Sports · high load</span><span class="org">Uzinfocom</span></div>
+              <h3 data-i18n="p3.title">UFA / FIFA platform</h3>
+              <p data-i18n="p3.desc">Platform for the Uzbekistan Football Association with integration into official FIFA projects.</p>
+              <ul class="impact">
+                <li data-i18n="p3.i1">Plug-in architecture</li>
+                <li data-i18n="p3.i2">Project and CRUD generator</li>
+                <li data-i18n="p3.i3">Reusable backend libraries</li>
+              </ul>
+            </article>
+            <article class="card project reveal">
+              <div class="card-top"><span class="tag" data-i18n="p4.tag">Enterprise</span><span class="org" data-i18n="p4.org">Uzbekistan Railways</span></div>
+              <h3 data-i18n="p4.title">Railways lab system</h3>
+              <p data-i18n="p4.desc">Automation system for the analysis, accounting, and certification of imported products.</p>
+              <ul class="impact">
+                <li data-i18n="p4.i1">Backend built from scratch</li>
+                <li data-i18n="p4.i2">Shipped to production</li>
+                <li data-i18n="p4.i3">Tested and documented</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS ============================================================ -->
+    <section class="section" id="skills" data-view="skills">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">04</span>
+            <h2 data-i18n="skills.title">Skills</h2>
+          </header>
+          <div class="skill-grid">
+            <article class="card reveal">
+              <h3 data-i18n="sk.lang">Programming languages</h3>
+              <ul class="chips chips-lg"><li class="chip-hl">Go</li><li>Python</li><li>C / C++</li><li>SQL (PostgreSQL)</li></ul>
+            </article>
+            <article class="card reveal">
+              <h3 data-i18n="sk.infra">Infrastructure &amp; messaging</h3>
+              <ul class="chips chips-lg"><li>Docker</li><li>Kubernetes</li><li>Kafka</li><li>NATS</li><li>Redis</li></ul>
+            </article>
+            <article class="card reveal">
+              <h3 data-i18n="sk.tools">Developer tools</h3>
+              <ul class="chips chips-lg"><li>Git</li><li>Postman</li><li>Swagger / OpenAPI</li></ul>
+            </article>
+            <article class="card reveal">
+              <h3 data-i18n="sk.practice">Practices &amp; domains</h3>
+              <ul class="chips chips-lg">
+                <li data-i18n="sk.payments">Payment systems</li>
+                <li>HL7 FHIR</li>
+                <li data-i18n="sk.observability">Observability</li>
+                <li data-i18n="sk.concurrency">Concurrency</li>
+                <li data-i18n="sk.codegen">Code generation</li>
+                <li data-i18n="sk.testing">Unit, integration &amp; E2E testing</li>
+              </ul>
+            </article>
+            <article class="card reveal">
+              <h3 data-i18n="sk.spoken">Languages</h3>
+              <ul class="chips chips-lg">
+                <li data-i18n="lang.en">English</li>
+                <li data-i18n="lang.ru">Russian</li>
+                <li data-i18n="lang.uz">Uzbek</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION ========================================================= -->
+    <section class="section" id="education" data-view="education">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">05</span>
+            <h2 data-i18n="edu.title">Education</h2>
+          </header>
+          <div class="cards">
+            <article class="card edu reveal">
+              <time data-i18n="edu1.date">Sep 2024 – Present · graduating 2027</time>
+              <h3 data-i18n="edu1.name">Riga Technical University</h3>
+              <p data-i18n="edu1.degree">Bachelor of Computer Science</p>
+              <span class="place" data-i18n="place.riga">Riga, Latvia</span>
+            </article>
+            <article class="card edu reveal">
+              <time data-i18n="edu2.date">Feb 2022 – Apr 2025</time>
+              <h3 data-i18n="edu2.name">School 21 (42 Network)</h3>
+              <p data-i18n="edu2.degree">Computer Science · peer-to-peer, project-based program</p>
+              <span class="place" data-i18n="place.kazan">Kazan, Russia</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT =========================================================== -->
+    <section class="section" id="contact" data-view="contact">
+      <div class="wrap">
+        <div class="col">
+          <header class="sec-head reveal">
+            <span class="sec-idx">06</span>
+            <h2 data-i18n="contact.title">Contact</h2>
+          </header>
+          <div class="contact reveal">
+            <p class="big" data-i18n="contact.head">Let's build something reliable.</p>
+            <p data-i18n="contact.lead">I'm open to backend engineering roles and interesting distributed-systems problems. Email is the fastest way to reach me.</p>
+            <div class="cta">
+              <a class="btn btn-primary" href="mailto:bekhzodkhudoyarov@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+                bekhzodkhudoyarov@gmail.com
+              </a>
+              <button class="btn btn-ghost" type="button" id="copy-email" data-email="bekhzodkhudoyarov@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                <span data-i18n="contact.copy">Copy email</span>
+              </button>
+            </div>
+            <div class="tiles">
+              <a class="tile" href="https://github.com/beccoder" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" class="fill" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .3"/></svg>
+                <span class="tile-label">GitHub</span>
+              </a>
+              <a class="tile" href="https://www.linkedin.com/in/bekhzodkhudoyarov" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" class="fill" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                <span class="tile-label">LinkedIn</span>
+              </a>
+              <a class="tile" href="assets/Bekhzod_Khudoyarov_CV.pdf" download>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M12 11.5v6m0 0l-2.5-2.5M12 17.5l2.5-2.5"/></svg>
+                <span class="tile-label" data-i18n="contact.pdf">CV · PDF</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <nav class="pagenav" aria-label="Section navigation">
-    <a class="home" href="#hero"><span class="label">bekhzod</span></a>
-    <a class="to" href="#about" data-dim="about"><span class="idx">01</span>about me</a>
-    <a class="to" href="#work" data-dim="work"><span class="idx">02</span>work</a>
-    <a class="to" href="#stack" data-dim="stack"><span class="idx">03</span>stack</a>
-    <a class="to" href="#contact" data-dim="contact"><span class="idx">04</span>contact</a>
-  </nav>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>© <span id="year">2026</span> <span data-i18n="name">Bekhzod Khudoyarov</span></p>
+      <p class="footer-note" data-i18n="footer.pdf">The PDF CV is in English.</p>
+    </div>
+  </footer>
 
+  <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
