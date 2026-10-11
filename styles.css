@@ -290,6 +290,7 @@ html[data-lang-pending] main, html[data-lang-pending] .nav, html[data-lang-pendi
   font-size: 14.5px; color: var(--text-soft); line-height: 1.6;
 }
 .overview strong { color: var(--text); font-weight: 600; }
+.ov-date { margin-right: 6px; font: 500 12px var(--font-mono); color: var(--muted); white-space: nowrap; }
 .ov-label {
   display: inline-block; margin-right: 6px; padding: 1px 8px; border-radius: 6px;
   background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent);
@@ -314,9 +315,18 @@ mark { background: color-mix(in srgb, var(--accent) 18%, transparent); color: va
 /* Skills */
 .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .skill-grid .card h3 { margin-bottom: 14px; font: 500 12px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-.skill-grid .card:nth-child(3) { order: 4; }
-.skill-grid .card:nth-child(4) { order: 3; grid-column: 1 / -1; }
-.skill-grid .card:nth-child(5) { order: 5; }
+.skill-grid .card.wide { grid-column: 1 / -1; }
+.skills-note { margin: -16px 0 20px; font: 13px var(--font-mono); color: var(--muted); }
+
+/* Years of use, localized unit */
+.chips li[data-y]::after {
+  content: attr(data-y) "y"; margin-left: 7px; padding: 0 6px; border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07); color: var(--muted);
+  font: 500 11px/1.6 var(--font-mono); vertical-align: 1px;
+}
+:lang(ru) .chips li[data-y]::after { content: attr(data-y) " г."; }
+:lang(uz) .chips li[data-y]::after { content: attr(data-y) " yil"; }
+.chips .chip-hl[data-y]::after { background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent); }
 @media (max-width: 640px) { .skill-grid { grid-template-columns: 1fr; } }
 
 /* Education */
